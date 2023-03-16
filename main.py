@@ -66,10 +66,10 @@ async def get_listedin(gen):
 
 
 @app.get("/get_actor/")
-async def get_actor(plataf, anio):
+async def get_actor(plataforma, año):
     '''Cantidad de veces que se repite un actor y la frecuencia del mismo'''
     conn = conexion.get_db()
     cursor = conn.cursor()
-    if anio == '2018' and plataf == 'netflix':
-        df = consultas.Query4(plataf)
+    if año == '2018' and plataforma == 'netflix':
+        df = consultas.Query4(año, plataforma)
         return df
