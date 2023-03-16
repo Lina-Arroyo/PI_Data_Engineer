@@ -70,6 +70,6 @@ async def get_actor(plataf, anio):
     '''Cantidad de veces que se repite un actor y la frecuencia del mismo'''
     conn = conexion.get_db()
     cursor = conn.cursor()
-    if anio == '2018':
+    if anio == '2018' and plataf == 'netflix':
         df = consultas.Query4(plataf)
         return df

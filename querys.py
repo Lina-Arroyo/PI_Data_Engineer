@@ -23,7 +23,18 @@ def Query3(genero):
     return result 
 
 def Query4(año, plataforma):
-    query = f"SELECT COUNT(cast) as cantidad, cast, plataforma FROM plataformas_stream WHERE cast LIKE '%andrea libman%' and release_year = '{año}' and plataforma = '{plataforma}' group by plataforma"
+    query = f'''SELECT actor, COUNT(*) as Frecuencia
+            FROM(
+                SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(cast, ',', numbers.n), ',', -1) AS actor
+                FROM plataformas_stream
+                CROSS JOIN (
+                    SELECT 1 n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+                ) AS numbers
+            WHERE CHAR_LENGTH(cast) - CHAR_LENGTH(REPLACE(cast, ',', '')) >= numbers.n - 1 and release_year = {año} and plataforma = '{plataforma}' and cast != 'Sin Dato'
+            )AS actores
+            GROUP BY actor
+            ORDER BY Frecuencia DESC
+            LIMIT 1'''
     cursor.execute(query)
     result = cursor.fetchall()
     return result
