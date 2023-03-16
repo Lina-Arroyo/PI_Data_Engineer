@@ -99,3 +99,7 @@ FASES DEL PROYECTO
 DESCRIPCION DEL TRABAJO REALIZADO
 
 Se inicio cargando los datasets en un datframe de pandas se realizo el EDA correspondiente a cada uno para visulizar los valores duplicados, faltantes nulos, etc; se procedio a realizar un ETL con el cual se realizaron las transformaciones correspondientes, se importo una base de datos con los datasets concatenados por ultimo creamos un ambiente virtual, dockerizamos fastapi y creamos las consultas en la api dando solucion a los requerimientos minimos solicitados.
+
+API:
+http://127.0.0.1:8000/docs#/
+![image](https://user-images.githubusercontent.com/105379715/218762906-c2e9e9f3-4a4b-4c93-86c8-d2a23b10b321.png)
